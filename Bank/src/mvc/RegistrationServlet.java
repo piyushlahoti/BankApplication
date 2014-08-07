@@ -1,7 +1,7 @@
 package mvc;
 /*
  *This servlet handles the registration process.
- *After getting the parameters from the reister.html page, a record is inserted in the accounts table.
+ *After getting the parameters from the register.html page, a record is inserted in the accounts table.
  *If the record is inserted, the account code and a random password are displayed on the screen for a limited time and then user is redirected to the Home page.
  *If record is not inserted a failure message is displayed
  */
@@ -31,7 +31,7 @@ public class RegistrationServlet extends HttpServlet
 	**/
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
 	{
-		String ac_name=req.getParameter("name");
+		String ac_name=req.getParameter("accName");
 		String houseno=req.getParameter("houseNo");
 		String street=req.getParameter("street");
 		String city=req.getParameter("city");
@@ -40,11 +40,11 @@ public class RegistrationServlet extends HttpServlet
 		String dob=req.getParameter("dob");
 		String email=req.getParameter("email");
 		String phno=req.getParameter("phoneNo");
-		
+		String gender=req.getParameter("gender");
 		PreparedStatement pst=null;
 		try 
 		{
-			pst = conn.prepareStatement("insert into Account (ac_name,houseno,street,city,state,country,dob,email,phno) values(?,?,?,?,?,?,?,?,?);");
+			pst = conn.prepareStatement("insert into Account(ac_name,houseno,street,city,state,country,dob,email,phno,gender) values(?,?,?,?,?,?,?,?,?,?);");
 			pst.setString(1,ac_name);
 			pst.setString(2,houseno);
 			pst.setString(3,street);
@@ -54,6 +54,7 @@ public class RegistrationServlet extends HttpServlet
 			pst.setDate(7,Date.valueOf(dob));
 			pst.setString(8,email);
 			pst.setString(9,phno);
+			pst.setString(10, gender);
 			int rows=pst.executeUpdate();
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("select max(ac_no) from account");
@@ -66,13 +67,21 @@ public class RegistrationServlet extends HttpServlet
 	        StringBuilder sb = new StringBuilder( 10 );
 			   for( int i = 0; i < 10; i++ ) 
 			      sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+			
 			pst.setInt(1,ac_no);
 			pst.setString(2, sb.toString());
 			pst.executeUpdate();
+			
+			pst = conn.prepareStatement("insert into balance values(?,?)");
+			pst.setInt(1,ac_no);
+			pst.setDouble(2, 0.0);
+			pst.executeUpdate();
+			
+			
 			req.setAttribute("rowsInserted", rows);
 			req.setAttribute("accountID",ac_no);
 			req.setAttribute("password",sb.toString());
-			//conn.close();
+			
 		} 
 		catch (SQLException e) 
 		{

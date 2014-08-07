@@ -1,5 +1,10 @@
 package mvc;
 
+import java.io.Serializable;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /*
  * Account bean class which contains all the details of an account viz. balance , account number, account holder's name etc. 
  * All the attributes are private and suitable getters and setters have been added to facilitate accessing them.
@@ -7,12 +12,12 @@ package mvc;
  */
 
 
-public class Account 
+public class Account implements Serializable
 {
 	
-	private String accNo;
+	private int accNo;
 	private String accName;
-	private String dob;
+	private Date dob;
 	private String phoneNo;
 	private String gender;
 	private String city;
@@ -39,12 +44,12 @@ public class Account
 		this.balance = balance;
 	}
 	
-	public String getAccNo() 
+	public int getAccNo() 
 	{
 		return accNo;
 	}
 
-	public void setAccNo(String accNo) 
+	public void setAccNo(int accNo) 
 	{
 		this.accNo = accNo;
 	}
@@ -61,10 +66,11 @@ public class Account
 
 	public String getDob() 
 	{
-		return dob;
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	    return df.format(dob);
 	}
 
-	public void setDob(String dob) 
+	public void setDob(Date dob) 
 	{
 		this.dob = dob;
 	}

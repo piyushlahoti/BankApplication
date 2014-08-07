@@ -1,5 +1,4 @@
 function validate(){
-	
 	var Name = document.getElementById("accName").value;
 	var dob = document.getElementById("dob").value;
 	var phno = document.getElementById("phoneNo").value;
@@ -90,15 +89,16 @@ function validate(){
 			msg = msg + "Not a valid email" + "\n";
 		}
 	}
-	
-	if(msg == ""){
+	if(msg == "")
+	{
 		alert("Success!!");
 		return true;
 	}
-	else{
+	else
+	{
 		document.getElementById("errorLog").innerHTML = msg;
 		alert(msg);
-	return false;
+		return false;
 	}
 }
 
@@ -106,3 +106,4 @@ function errorclear(){
 	var msg="";
 	document.getElementById("errorLog").innerHTML = msg;
 }
+

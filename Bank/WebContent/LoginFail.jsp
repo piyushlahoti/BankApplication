@@ -16,19 +16,9 @@
 
 </head>
 
-<body>
+<body onload="setTimeout(display(),5000)">
 <%
-int rows = (Integer)request.getAttribute("rowsInserted");
-if(rows>0)
-{
-	out.println("Registration successful<br/>");
-	out.println("Account ID: "+(Integer)request.getAttribute("accountID")+"<br/>");
-	out.println("Password: "+(String)request.getAttribute("password")+"<br/>");
-}
-else if(rows<0)
-{
-	out.println("Registration failed");	
-}
+	out.println("Login failed");	
 %>
 <a href="Home.html">Go Back</a>
 </body>

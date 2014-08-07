@@ -24,4 +24,24 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccountOperation</display-name>
+    <servlet-name>AccountOperation</servlet-name>
+    <servlet-class>mvc.AccountOperation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountOperation</servlet-name>
+    <url-pattern>/AccountOperation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateServlet</display-name>
+    <servlet-name>UpdateServlet</servlet-name>
+    <servlet-class>mvc.UpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateServlet</servlet-name>
+    <url-pattern>/UpdateServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
