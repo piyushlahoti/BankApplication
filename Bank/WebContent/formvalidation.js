@@ -1,15 +1,17 @@
 function validate(){
 	var Name = document.getElementById("accName").value;
+	var nameReg =  /^[\sA-Za-z]+$/;
 	var dob = document.getElementById("dob").value;
 	var phno = document.getElementById("phoneNo").value;
 	var city = document.getElementById("city").value;
 	var state = document.getElementById("state").value;
 	var country = document.getElementById("country").value;
 	var email = document.getElementById("email").value;
-	var emailReg = /^[A-Za-z]+@[A-Za-z]+$/;
+	var emailReg = /^[A-Za-z]{1}[A-Za-z0-9]+@[A-Za-z]+[\.][A-Za-z]+$/;
+	//var emailReg = /^[A-Za-z]+@[A-Za-z]+$/;
 	//var emailReg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 	var dateReg = /^\d{4}[-]\d{2}[-]\d{2}$/;
-	var nameReg =  /^[A-Za-z]+$/;
+	//var nameReg =  /^[A-Za-z]+$/;
 	var phnoReg = /^[1-9]{1}[0-9]*$/;
 	var msg="";
 	

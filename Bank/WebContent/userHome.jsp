@@ -12,7 +12,7 @@
 </head>
 <body onLoad="disableSubmitButton()">
 	<jsp:useBean id="account" class="mvc.Account" scope="session"></jsp:useBean>
-	<form onsubmit="return validate()" method="post" class="elegant-aero" id="detailsform">
+	<form onsubmit="return validate()" action="UpdateServlet" method="get" class="elegant-aero" id="detailsform">
 		 <h1>Your Profile
     	</h1>
     	<label>
